@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.next/
+.source/
+.turbo/
+*.tsbuildinfo
+*.tgz
+.env
+.env.*
+!.env.example
+.DS_Store
+.open-next/
+.vercel/

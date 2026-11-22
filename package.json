@@ -1,0 +1,111 @@
+{
+  "name": "@medu/lerno",
+  "version": "2.0.0",
+  "description": "Framework-agnostic, extension-based educational content engine: declarative content types, deterministic runtime and K-12 STEM discipline kernels.",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/esm/core.js",
+      "require": "./dist/core.js"
+    },
+    "./session": {
+      "types": "./dist/runtime/session.d.ts",
+      "import": "./dist/esm/runtime/session.js",
+      "require": "./dist/runtime/session.js"
+    },
+    "./content": {
+      "types": "./dist/content/index.d.ts",
+      "import": "./dist/esm/content/index.js",
+      "require": "./dist/content/index.js"
+    },
+    "./grading": {
+      "types": "./dist/grading/grader.d.ts",
+      "import": "./dist/esm/grading/grader.js",
+      "require": "./dist/grading/grader.js"
+    },
+    "./extensions": {
+      "types": "./dist/extensions/index.d.ts",
+      "import": "./dist/esm/extensions/index.js",
+      "require": "./dist/extensions/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "!dist/tsconfig.tsbuildinfo",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc && bun run build:esm",
+    "build:esm": "bun build src/index.ts src/core.ts src/runtime/session.ts src/content/index.ts src/grading/grader.ts src/extensions/index.ts --outdir dist/esm --format esm --target node --packages external --splitting && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "clean": "rm -rf dist",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run type-check && bun run test"
+  },
+  "keywords": [
+    "education",
+    "content-types",
+    "interactive-video",
+    "branching-scenario",
+    "math-animation",
+    "physics-simulation",
+    "stem",
+    "scene-graph",
+    "lerno"
+  ],
+  "author": "Lerno contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trymedu/lerno.git"
+  },
+  "homepage": "https://github.com/trymedu/lerno/tree/main/packages/lerno#readme",
+  "bugs": {
+    "url": "https://github.com/trymedu/lerno/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "zod": "^4.6.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.7",
+    "eslint": "^10.15.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.73.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testEnvironment": "node"
+  },
+  "sideEffects": false
+}
