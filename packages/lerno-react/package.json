@@ -1,0 +1,76 @@
+{
+  "name": "@medu/lerno-react",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "React components and interactive STEM labs built on the @medu/lerno engine.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit",
+    "test": "bun test src",
+    "prepublishOnly": "bun run type-check && bun run test",
+    "prepack": "bun run build"
+  },
+  "keywords": [
+    "react",
+    "stem",
+    "education",
+    "math-animation",
+    "physics-simulation",
+    "medu",
+    "lerno"
+  ],
+  "author": "Lerno contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@medu/lerno": "workspace:*",
+    "@medu/lerno-motion": "workspace:*",
+    "katex": "^0.16.11"
+  },
+  "peerDependencies": {
+    "@heroui/react": "^3.2.4",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@happy-dom/global-registrator": "^21.0.4",
+    "@heroui/react": "^3.2.4",
+    "@testing-library/react": "^16.3.3",
+    "@types/bun": "^1.2.20",
+    "@types/katex": "^0.16.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.7",
+    "happy-dom": "^21.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
+  },
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trymedu/lerno.git"
+  },
+  "homepage": "https://github.com/trymedu/lerno/tree/main/packages/lerno-react#readme",
+  "bugs": {
+    "url": "https://github.com/trymedu/lerno/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

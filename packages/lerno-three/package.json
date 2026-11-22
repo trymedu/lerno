@@ -1,0 +1,60 @@
+{
+  "name": "@medu/lerno-three",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Three.js extension: 3D modeling and animation driven by Lerno variable management.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit",
+    "test": "bun test src",
+    "prepublishOnly": "bun run type-check && bun run test",
+    "prepack": "bun run build"
+  },
+  "dependencies": {
+    "@medu/lerno": "workspace:*",
+    "@medu/lerno-motion": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "three": ">=0.160.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.20",
+    "@types/react": "^19.0.7",
+    "@types/three": "^0.186.0",
+    "react": "^19.0.0",
+    "three": "^0.186.1",
+    "typescript": "^5.7.3"
+  },
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "author": "Lerno contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trymedu/lerno.git"
+  },
+  "homepage": "https://github.com/trymedu/lerno/tree/main/packages/lerno-three#readme",
+  "bugs": {
+    "url": "https://github.com/trymedu/lerno/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

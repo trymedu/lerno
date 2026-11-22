@@ -1,0 +1,51 @@
+{
+  "name": "@medu/lerno-motion",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Spring, keyframe, sequence, and stagger animation for Lerno.",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json --emitDeclarationOnly && bun build src/index.ts --outdir dist/esm --format esm --target node --packages external --splitting && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "type-check": "tsc --noEmit",
+    "test": "bun test src",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run type-check && bun run test"
+  },
+  "dependencies": {
+    "@medu/lerno": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.20",
+    "typescript": "^5.7.3"
+  },
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "author": "Lerno contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trymedu/lerno.git"
+  },
+  "homepage": "https://github.com/trymedu/lerno/tree/main/packages/lerno-motion#readme",
+  "bugs": {
+    "url": "https://github.com/trymedu/lerno/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

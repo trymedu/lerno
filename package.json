@@ -1,0 +1,27 @@
+{
+  "name": "lerno",
+  "private": true,
+  "type": "module",
+  "description": "Framework-agnostic engine for educational content: declarative content types, a deterministic session runtime, grading, and STEM kernels.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "bun run build:packages",
+    "build:packages": "bun run --cwd packages/lerno build && bun run --cwd packages/lerno-motion build && bun run --cwd packages/lerno-three build && bun run --cwd packages/lerno-react build && bun run --cwd packages/lerno-export build",
+    "type-check": "bun run --cwd packages/lerno type-check && bun run --cwd packages/lerno-motion type-check && bun run --cwd packages/lerno-three type-check && bun run --cwd packages/lerno-react type-check && bun run --cwd packages/lerno-export type-check",
+    "test": "bun run --cwd packages/lerno test && bun run --cwd packages/lerno-motion test && bun run --cwd packages/lerno-three test && bun run --cwd packages/lerno-react test && bun run --cwd packages/lerno-export test",
+    "clean": "rm -rf packages/*/dist",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript-eslint": "^8.73.0"
+  }
+}

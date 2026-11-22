@@ -1,0 +1,63 @@
+{
+  "name": "@medu/lerno-export",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Headless MP4 export for Lerno: deterministic frames, a React-free canvas rasterizer, and an ffmpeg encoder.",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json --emitDeclarationOnly && bun build src/index.ts --outdir dist/esm --format esm --target node --packages external --splitting && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "type-check": "tsc --noEmit",
+    "test": "bun test src",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run type-check && bun run test"
+  },
+  "keywords": [
+    "lerno",
+    "export",
+    "mp4",
+    "video",
+    "headless",
+    "canvas",
+    "ffmpeg"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@medu/lerno": "workspace:*"
+  },
+  "peerDependencies": {
+    "@napi-rs/canvas": "^1.0.9"
+  },
+  "peerDependenciesMeta": {
+    "@napi-rs/canvas": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.0.9",
+    "@types/bun": "^1.2.20",
+    "@types/node": "22",
+    "typescript": "^5.7.3"
+  },
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "author": "Lerno contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trymedu/lerno.git"
+  },
+  "homepage": "https://github.com/trymedu/lerno/tree/main/packages/lerno-export#readme",
+  "bugs": {
+    "url": "https://github.com/trymedu/lerno/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
